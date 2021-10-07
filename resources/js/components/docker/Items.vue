@@ -6,7 +6,7 @@
         <div class="card-body">
           <section class="content">
             <div class="row">
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <div class="card card-primary">
                   <div class="card-header">
                     <h3 class="card-title">Item</h3>
@@ -42,20 +42,20 @@
                         <label class="custom-file-label" for="customFile">Choose file</label>
                       </div>
                     </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <input type="submit" value="Create Item" class="btn btn-success float-left">
+                      </div>
+                    </div>
                   </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-12">
-                    <input type="submit" value="Create Item" class="btn btn-success float-right">
-                    </div>
-                </div>
               </div>
-
-              <div class="col-md-6">
+            </div>
+            <div class="row">
+              <div class="col-md-12">
                 <div class="card card-secondary" style="height:420px;">
                   <div class="card-header">
                     <h3 class="card-title">Item List</h3>
-
                     <div class="card-tools">
                       <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                       <i class="fas fa-minus"></i>
@@ -63,39 +63,29 @@
                     </div>
                   </div>
                   <div class="card-body p-0">
-                    <table class="table">
+                    <table class="table table-bordered">
                       <thead>
                         <tr>
-                          <th>Item Name</th>
-                          <th></th>
+                          <th>Code</th>
+                          <th>Name</th>
+                          <th>Description</th>
+                          <th>Type</th>
+                          <th>Image</th>
+                          <th width="100"></th>
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td>Functional-requirements.docx</td>
-                          <td class="text-right py-0 align-middle">
-                            <div class="btn-group btn-group-sm">
-                              <a href="#" class="btn btn-info"><i class="fas fa-eye"></i></a>
-                              <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>UAT.pdf</td>
-                          <td class="text-right py-0 align-middle">
-                            <div class="btn-group btn-group-sm">
-                              <a href="#" class="btn btn-info"><i class="fas fa-eye"></i></a>
-                              <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Email-from-flatbal.mln</td>
-                          <td class="text-right py-0 align-middle">
-                            <div class="btn-group btn-group-sm">
-                              <a href="#" class="btn btn-info"><i class="fas fa-eye"></i></a>
-                              <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
-                            </div>
+                        <tr v-for="item in items" :key="item.id">
+                          <td>{{ item.code }}</td>
+                          <td>{{ item.name }}</td>
+                          <td>{{ item.description }}</td>
+                          <td>{{ item.type }}</td>
+                          <td><img :src="item.image" :alt="item.image"></td>
+                          <td class="text-center py-0 align-middle">
+                              <div class="btn-group btn-group-sm">
+                                  <a href="#" class="btn btn-info"><i class="fas fa-eye"></i></a>
+                                  <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                              </div>
                           </td>
                         </tr>
                       </tbody>
@@ -110,7 +100,6 @@
                 <div class="card card-info">
                   <div class="card-header">
                     <h3 class="card-title">Item Details</h3>
-
                     <div class="card-tools">
                       <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                       <i class="fas fa-minus"></i>
@@ -164,9 +153,22 @@
 </template>
 
 <script>
+
     export default {
-        mounted() {
-            console.log('Component mounted.')
+      data() {
+        return{
+          items: []
         }
+      },
+      methods: {
+        getItems(){
+          axios.get("/api/items").then(response => {
+            this.items = response.data;
+          });
+        }
+      },
+      created(){
+        this.getItems();
+      }
     }
 </script>

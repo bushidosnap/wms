@@ -10,6 +10,8 @@ class Crate extends Model
 
     use HasFactory;
 
+    public $fillable = ['code', 'container_id', 'name', 'description'];
+    
     public function container()
     {
         return $this->belongsTo(Container::class);

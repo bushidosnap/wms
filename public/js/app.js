@@ -2132,9 +2132,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  mounted: function mounted() {
-    console.log('Component mounted.');
+  props: {
+    itemCode: String,
+    itemName: Number
   }
 });
 
@@ -2356,48 +2359,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -3000,20 +2961,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  mounted: function mounted() {
-    console.log('Component mounted.');
+  data: function data() {
+    return {
+      items: []
+    };
+  },
+  methods: {
+    getItems: function getItems() {
+      var _this = this;
+
+      axios.get("/api/items").then(function (response) {
+        _this.items = response.data;
+      });
+    }
+  },
+  created: function created() {
+    this.getItems();
   }
 });
 
@@ -3034,23 +2998,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js")["default"];
 
 
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
-// const files = require.context('./', true, /\.vue$/i)
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
-
 vue__WEBPACK_IMPORTED_MODULE_1__["default"].component('example-component', __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue")["default"]);
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
-
 var app = new vue__WEBPACK_IMPORTED_MODULE_1__["default"]({
   el: '#app',
   router: _router__WEBPACK_IMPORTED_MODULE_0__["default"]
@@ -39098,32 +39046,28 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row justify-content-center" }, [
-        _c("div", { staticClass: "col-md-8" }, [
-          _c("div", { staticClass: "card" }, [
-            _c("div", { staticClass: "card-header" }, [
-              _vm._v("Example Component")
-            ]),
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row justify-content-center" }, [
+      _c("div", { staticClass: "col-md-8" }, [
+        _c("div", { staticClass: "card" }, [
+          _c("div", { staticClass: "card-header" }, [
+            _vm._v("Example Component")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _vm._v(
+              "\n                    I'm an example component.\n                    "
+            ),
+            _c("p", [_vm._v(_vm._s(_vm.itemCode))]),
             _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _vm._v(
-                "\n                    I'm an example component.\n                "
-              )
-            ])
+            _c("p", [_vm._v(_vm._s(_vm.itemName))])
           ])
         ])
       ])
     ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -39636,112 +39580,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "row mt-5" }, [
-      _c("div", { staticClass: "col-md-12" }, [
-        _c("div", { staticClass: "card card-primary card-outline" }, [
-          _c("div", { staticClass: "card-header" }, [
-            _c("h3", { staticClass: "card-title" }, [
-              _c("i", { staticClass: "fas fa-shipping-fast" }),
-              _vm._v("\n          Outbound Section\n        ")
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-body" }, [
-            _c("div", { staticClass: "row" }, [
-              _c("div", { staticClass: "col-5 col-sm-3" }, [
-                _c(
-                  "div",
-                  {
-                    staticClass: "nav flex-column nav-tabs h-100",
-                    attrs: {
-                      id: "vert-tabs-tab",
-                      role: "tablist",
-                      "aria-orientation": "vertical"
-                    }
-                  },
-                  [
-                    _c(
-                      "a",
-                      {
-                        staticClass: "nav-link active",
-                        attrs: {
-                          id: "vert-tabs-home-tab",
-                          "data-toggle": "pill",
-                          href: "#vert-tabs-home",
-                          role: "tab",
-                          "aria-controls": "vert-tabs-home",
-                          "aria-selected": "true"
-                        }
-                      },
-                      [_vm._v("List Outbound")]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "a",
-                      {
-                        staticClass: "nav-link",
-                        attrs: {
-                          id: "vert-tabs-profile-tab",
-                          "data-toggle": "pill",
-                          href: "#vert-tabs-profile",
-                          role: "tab",
-                          "aria-controls": "vert-tabs-profile",
-                          "aria-selected": "false"
-                        }
-                      },
-                      [_vm._v("Set Outbound")]
-                    )
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-7 col-sm-9" }, [
-                _c(
-                  "div",
-                  {
-                    staticClass: "tab-content",
-                    attrs: { id: "vert-tabs-tabContent" }
-                  },
-                  [
-                    _c(
-                      "div",
-                      {
-                        staticClass: "tab-pane text-left fade show active",
-                        attrs: {
-                          id: "vert-tabs-home",
-                          role: "tabpanel",
-                          "aria-labelledby": "vert-tabs-home-tab"
-                        }
-                      },
-                      [
-                        _vm._v(
-                          "\n                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin malesuada lacus ullamcorper dui molestie, sit amet congue quam finibus. Etiam ultricies nunc non magna feugiat commodo. Etiam odio magna, mollis auctor felis vitae, ullamcorper ornare ligula. Proin pellentesque tincidunt nisi, vitae ullamcorper felis aliquam id. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin id orci eu lectus blandit suscipit. Phasellus porta, ante et varius ornare, sem enim sollicitudin eros, at commodo leo est vitae lacus. Etiam ut porta sem. Proin porttitor porta nisl, id tempor risus rhoncus quis. In in quam a nibh cursus pulvinar non consequat neque. Mauris lacus elit, condimentum ac condimentum at, semper vitae lectus. Cras lacinia erat eget sapien porta consectetur.\n              "
-                        )
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "tab-pane fade",
-                        attrs: {
-                          id: "vert-tabs-profile",
-                          role: "tabpanel",
-                          "aria-labelledby": "vert-tabs-profile-tab"
-                        }
-                      },
-                      [
-                        _vm._v(
-                          "\n                Mauris tincidunt mi at erat gravida, eget tristique urna bibendum. Mauris pharetra purus ut ligula tempor, et vulputate metus facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas sollicitudin, nisi a luctus interdum, nisl ligula placerat mi, quis posuere purus ligula eu lectus. Donec nunc tellus, elementum sit amet ultricies at, posuere nec nunc. Nunc euismod pellentesque diam.\n              "
-                        )
-                      ]
-                    )
-                  ]
-                )
-              ])
-            ])
-          ])
-        ])
-      ])
+      _c("div", { staticClass: "col-md-12" })
     ])
   }
 ]
@@ -40553,7 +40392,7 @@ var staticRenderFns = [
                               _c("div", { staticClass: "text-muted" }, [
                                 _c("p", { staticClass: "text-sm" }, [
                                   _vm._v(
-                                    "Crate Name\n                              "
+                                    "Crate Name\r\n                              "
                                   ),
                                   _c("b", { staticClass: "d-block" }, [
                                     _vm._v("Deveint crate")
@@ -40566,7 +40405,7 @@ var staticRenderFns = [
                               _c("div", { staticClass: "text-muted" }, [
                                 _c("p", { staticClass: "text-sm" }, [
                                   _vm._v(
-                                    "Crate Code\n                              "
+                                    "Crate Code\r\n                              "
                                   ),
                                   _c("b", { staticClass: "d-block" }, [
                                     _vm._v("5123BN456C")
@@ -40581,11 +40420,11 @@ var staticRenderFns = [
                               _c("div", { staticClass: "text-muted" }, [
                                 _c("p", { staticClass: "text-sm" }, [
                                   _vm._v(
-                                    "Crate Description\n                              "
+                                    "Crate Description\r\n                              "
                                   ),
                                   _c("b", { staticClass: "d-block" }, [
                                     _vm._v(
-                                      "Raw denim you probably haven't heard of them jean shorts Austin. \n                                Nesciunt tofu stumptown aliqua butcher retro keffiyeh dreamcatcher synth. \n                                Cosby sweater eu banh mi, qui irure terr."
+                                      "Raw denim you probably haven't heard of them jean shorts Austin. \r\n                                Nesciunt tofu stumptown aliqua butcher retro keffiyeh dreamcatcher synth. \r\n                                Cosby sweater eu banh mi, qui irure terr."
                                     )
                                   ])
                                 ])
@@ -40681,372 +40520,305 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "row mt-5" }, [
+    _c("div", { staticClass: "col-md-12" }, [
+      _c("div", { staticClass: "card" }, [
+        _c("div", { staticClass: "card-header" }, [_vm._v("Item Section")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-body" }, [
+          _c("section", { staticClass: "content" }, [
+            _vm._m(0),
+            _vm._v(" "),
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col-md-12" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass: "card card-secondary",
+                    staticStyle: { height: "420px" }
+                  },
+                  [
+                    _vm._m(1),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "card-body p-0" }, [
+                      _c("table", { staticClass: "table table-bordered" }, [
+                        _vm._m(2),
+                        _vm._v(" "),
+                        _c(
+                          "tbody",
+                          _vm._l(_vm.items, function(item) {
+                            return _c("tr", { key: item.id }, [
+                              _c("td", [_vm._v(_vm._s(item.code))]),
+                              _vm._v(" "),
+                              _c("td", [_vm._v(_vm._s(item.name))]),
+                              _vm._v(" "),
+                              _c("td", [_vm._v(_vm._s(item.description))]),
+                              _vm._v(" "),
+                              _c("td", [_vm._v(_vm._s(item.type))]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _c("img", {
+                                  attrs: { src: item.image, alt: item.image }
+                                })
+                              ]),
+                              _vm._v(" "),
+                              _vm._m(3, true)
+                            ])
+                          }),
+                          0
+                        )
+                      ])
+                    ])
+                  ]
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("br"),
+            _c("br"),
+            _vm._v(" "),
+            _vm._m(4)
+          ])
+        ])
+      ])
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row mt-5" }, [
+    return _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-md-12" }, [
-        _c("div", { staticClass: "card" }, [
-          _c("div", { staticClass: "card-header" }, [_vm._v("Item Section")]),
+        _c("div", { staticClass: "card card-primary" }, [
+          _c("div", { staticClass: "card-header" }, [
+            _c("h3", { staticClass: "card-title" }, [_vm._v("Item")]),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-tools" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-tool",
+                  attrs: {
+                    type: "button",
+                    "data-card-widget": "collapse",
+                    title: "Collapse"
+                  }
+                },
+                [_c("i", { staticClass: "fas fa-minus" })]
+              )
+            ])
+          ]),
           _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
-            _c("section", { staticClass: "content" }, [
-              _c("div", { staticClass: "row" }, [
-                _c("div", { staticClass: "col-md-6" }, [
-                  _c("div", { staticClass: "card card-primary" }, [
-                    _c("div", { staticClass: "card-header" }, [
-                      _c("h3", { staticClass: "card-title" }, [_vm._v("Item")]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "card-tools" }, [
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-tool",
-                            attrs: {
-                              type: "button",
-                              "data-card-widget": "collapse",
-                              title: "Collapse"
-                            }
-                          },
-                          [_c("i", { staticClass: "fas fa-minus" })]
-                        )
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "card-body" }, [
-                      _c("div", { staticClass: "row" }, [
-                        _c("div", { staticClass: "col-md-6" }, [
-                          _c("div", { staticClass: "form-group" }, [
-                            _c("label", { attrs: { for: "inputName" } }, [
-                              _vm._v("Item Name")
-                            ]),
-                            _vm._v(" "),
-                            _c("input", {
-                              staticClass: "form-control",
-                              attrs: { type: "text", id: "inputName" }
-                            })
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "col-md-6" }, [
-                          _c("div", { staticClass: "form-group" }, [
-                            _c("label", { attrs: { for: "inputName" } }, [
-                              _vm._v("Item Code")
-                            ]),
-                            _vm._v(" "),
-                            _c("input", {
-                              staticClass: "form-control",
-                              attrs: { type: "text", id: "inputName" }
-                            })
-                          ])
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "form-group" }, [
-                        _c("label", { attrs: { for: "inputDescription" } }, [
-                          _vm._v("Item Description")
-                        ]),
-                        _vm._v(" "),
-                        _c("textarea", {
-                          staticClass: "form-control",
-                          attrs: { id: "inputDescription", rows: "4" }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "form-group" }, [
-                        _c("label", { attrs: { for: "image" } }, [
-                          _vm._v("Image")
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "custom-file" }, [
-                          _c("input", {
-                            staticClass: "custom-file-input",
-                            attrs: { type: "file", id: "customFile" }
-                          }),
-                          _vm._v(" "),
-                          _c(
-                            "label",
-                            {
-                              staticClass: "custom-file-label",
-                              attrs: { for: "customFile" }
-                            },
-                            [_vm._v("Choose file")]
-                          )
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col-md-6" }, [
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "inputName" } }, [
+                    _vm._v("Item Name")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    staticClass: "form-control",
+                    attrs: { type: "text", id: "inputName" }
+                  })
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-md-6" }, [
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "inputName" } }, [
+                    _vm._v("Item Code")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    staticClass: "form-control",
+                    attrs: { type: "text", id: "inputName" }
+                  })
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", { attrs: { for: "inputDescription" } }, [
+                _vm._v("Item Description")
+              ]),
+              _vm._v(" "),
+              _c("textarea", {
+                staticClass: "form-control",
+                attrs: { id: "inputDescription", rows: "4" }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", { attrs: { for: "image" } }, [_vm._v("Image")]),
+              _vm._v(" "),
+              _c("div", { staticClass: "custom-file" }, [
+                _c("input", {
+                  staticClass: "custom-file-input",
+                  attrs: { type: "file", id: "customFile" }
+                }),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  {
+                    staticClass: "custom-file-label",
+                    attrs: { for: "customFile" }
+                  },
+                  [_vm._v("Choose file")]
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col-md-12" }, [
+                _c("input", {
+                  staticClass: "btn btn-success float-left",
+                  attrs: { type: "submit", value: "Create Item" }
+                })
+              ])
+            ])
+          ])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header" }, [
+      _c("h3", { staticClass: "card-title" }, [_vm._v("Item List")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "card-tools" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-tool",
+            attrs: {
+              type: "button",
+              "data-card-widget": "collapse",
+              title: "Collapse"
+            }
+          },
+          [_c("i", { staticClass: "fas fa-minus" })]
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("Code")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Name")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Description")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Type")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Image")]),
+        _vm._v(" "),
+        _c("th", { attrs: { width: "100" } })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", { staticClass: "text-center py-0 align-middle" }, [
+      _c("div", { staticClass: "btn-group btn-group-sm" }, [
+        _c("a", { staticClass: "btn btn-info", attrs: { href: "#" } }, [
+          _c("i", { staticClass: "fas fa-eye" })
+        ]),
+        _vm._v(" "),
+        _c("a", { staticClass: "btn btn-danger", attrs: { href: "#" } }, [
+          _c("i", { staticClass: "fas fa-trash" })
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-12" }, [
+        _c("div", { staticClass: "card card-info" }, [
+          _c("div", { staticClass: "card-header" }, [
+            _c("h3", { staticClass: "card-title" }, [_vm._v("Item Details")]),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-tools" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-tool",
+                  attrs: {
+                    type: "button",
+                    "data-card-widget": "collapse",
+                    title: "Collapse"
+                  }
+                },
+                [_c("i", { staticClass: "fas fa-minus" })]
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body p-0" }, [
+            _c("div", { staticClass: "row pt-3 pl-3" }, [
+              _c("div", { staticClass: "col-md-10" }, [
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-md-6" }, [
+                    _c("div", { staticClass: "text-muted" }, [
+                      _c("p", { staticClass: "text-sm" }, [
+                        _vm._v("Item Name\n                              "),
+                        _c("b", { staticClass: "d-block" }, [
+                          _vm._v("Deveint Item")
                         ])
                       ])
                     ])
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "row" }, [
-                    _c("div", { staticClass: "col-md-12" }, [
-                      _c("input", {
-                        staticClass: "btn btn-success float-right",
-                        attrs: { type: "submit", value: "Create Item" }
-                      })
+                  _c("div", { staticClass: "col-md-6" }, [
+                    _c("div", { staticClass: "text-muted" }, [
+                      _c("p", { staticClass: "text-sm" }, [
+                        _vm._v("Item Code\n                              "),
+                        _c("b", { staticClass: "d-block" }, [
+                          _vm._v("5123BN456C")
+                        ])
+                      ])
                     ])
                   ])
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "col-md-6" }, [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "card card-secondary",
-                      staticStyle: { height: "420px" }
-                    },
-                    [
-                      _c("div", { staticClass: "card-header" }, [
-                        _c("h3", { staticClass: "card-title" }, [
-                          _vm._v("Item List")
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "card-tools" }, [
-                          _c(
-                            "button",
-                            {
-                              staticClass: "btn btn-tool",
-                              attrs: {
-                                type: "button",
-                                "data-card-widget": "collapse",
-                                title: "Collapse"
-                              }
-                            },
-                            [_c("i", { staticClass: "fas fa-minus" })]
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-md-12" }, [
+                    _c("div", { staticClass: "text-muted" }, [
+                      _c("p", { staticClass: "text-sm" }, [
+                        _vm._v(
+                          "Item Description\n                              "
+                        ),
+                        _c("b", { staticClass: "d-block" }, [
+                          _vm._v(
+                            "Raw denim you probably haven't heard of them jean shorts Austin. \n                                Nesciunt tofu stumptown aliqua butcher retro keffiyeh dreamcatcher synth. \n                                Cosby sweater eu banh mi, qui irure terr."
                           )
                         ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "card-body p-0" }, [
-                        _c("table", { staticClass: "table" }, [
-                          _c("thead", [
-                            _c("tr", [
-                              _c("th", [_vm._v("Item Name")]),
-                              _vm._v(" "),
-                              _c("th")
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("tbody", [
-                            _c("tr", [
-                              _c("td", [
-                                _vm._v("Functional-requirements.docx")
-                              ]),
-                              _vm._v(" "),
-                              _c(
-                                "td",
-                                { staticClass: "text-right py-0 align-middle" },
-                                [
-                                  _c(
-                                    "div",
-                                    { staticClass: "btn-group btn-group-sm" },
-                                    [
-                                      _c(
-                                        "a",
-                                        {
-                                          staticClass: "btn btn-info",
-                                          attrs: { href: "#" }
-                                        },
-                                        [_c("i", { staticClass: "fas fa-eye" })]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "a",
-                                        {
-                                          staticClass: "btn btn-danger",
-                                          attrs: { href: "#" }
-                                        },
-                                        [
-                                          _c("i", {
-                                            staticClass: "fas fa-trash"
-                                          })
-                                        ]
-                                      )
-                                    ]
-                                  )
-                                ]
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c("tr", [
-                              _c("td", [_vm._v("UAT.pdf")]),
-                              _vm._v(" "),
-                              _c(
-                                "td",
-                                { staticClass: "text-right py-0 align-middle" },
-                                [
-                                  _c(
-                                    "div",
-                                    { staticClass: "btn-group btn-group-sm" },
-                                    [
-                                      _c(
-                                        "a",
-                                        {
-                                          staticClass: "btn btn-info",
-                                          attrs: { href: "#" }
-                                        },
-                                        [_c("i", { staticClass: "fas fa-eye" })]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "a",
-                                        {
-                                          staticClass: "btn btn-danger",
-                                          attrs: { href: "#" }
-                                        },
-                                        [
-                                          _c("i", {
-                                            staticClass: "fas fa-trash"
-                                          })
-                                        ]
-                                      )
-                                    ]
-                                  )
-                                ]
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c("tr", [
-                              _c("td", [_vm._v("Email-from-flatbal.mln")]),
-                              _vm._v(" "),
-                              _c(
-                                "td",
-                                { staticClass: "text-right py-0 align-middle" },
-                                [
-                                  _c(
-                                    "div",
-                                    { staticClass: "btn-group btn-group-sm" },
-                                    [
-                                      _c(
-                                        "a",
-                                        {
-                                          staticClass: "btn btn-info",
-                                          attrs: { href: "#" }
-                                        },
-                                        [_c("i", { staticClass: "fas fa-eye" })]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "a",
-                                        {
-                                          staticClass: "btn btn-danger",
-                                          attrs: { href: "#" }
-                                        },
-                                        [
-                                          _c("i", {
-                                            staticClass: "fas fa-trash"
-                                          })
-                                        ]
-                                      )
-                                    ]
-                                  )
-                                ]
-                              )
-                            ])
-                          ])
-                        ])
-                      ])
-                    ]
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("br"),
-              _c("br"),
-              _vm._v(" "),
-              _c("div", { staticClass: "row" }, [
-                _c("div", { staticClass: "col-md-12" }, [
-                  _c("div", { staticClass: "card card-info" }, [
-                    _c("div", { staticClass: "card-header" }, [
-                      _c("h3", { staticClass: "card-title" }, [
-                        _vm._v("Item Details")
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "card-tools" }, [
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-tool",
-                            attrs: {
-                              type: "button",
-                              "data-card-widget": "collapse",
-                              title: "Collapse"
-                            }
-                          },
-                          [_c("i", { staticClass: "fas fa-minus" })]
-                        )
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "card-body p-0" }, [
-                      _c("div", { staticClass: "row pt-3 pl-3" }, [
-                        _c("div", { staticClass: "col-md-10" }, [
-                          _c("div", { staticClass: "row" }, [
-                            _c("div", { staticClass: "col-md-6" }, [
-                              _c("div", { staticClass: "text-muted" }, [
-                                _c("p", { staticClass: "text-sm" }, [
-                                  _vm._v(
-                                    "Item Name\n                              "
-                                  ),
-                                  _c("b", { staticClass: "d-block" }, [
-                                    _vm._v("Deveint Item")
-                                  ])
-                                ])
-                              ])
-                            ]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "col-md-6" }, [
-                              _c("div", { staticClass: "text-muted" }, [
-                                _c("p", { staticClass: "text-sm" }, [
-                                  _vm._v(
-                                    "Item Code\n                              "
-                                  ),
-                                  _c("b", { staticClass: "d-block" }, [
-                                    _vm._v("5123BN456C")
-                                  ])
-                                ])
-                              ])
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "row" }, [
-                            _c("div", { staticClass: "col-md-12" }, [
-                              _c("div", { staticClass: "text-muted" }, [
-                                _c("p", { staticClass: "text-sm" }, [
-                                  _vm._v(
-                                    "Item Description\n                              "
-                                  ),
-                                  _c("b", { staticClass: "d-block" }, [
-                                    _vm._v(
-                                      "Raw denim you probably haven't heard of them jean shorts Austin. \n                                Nesciunt tofu stumptown aliqua butcher retro keffiyeh dreamcatcher synth. \n                                Cosby sweater eu banh mi, qui irure terr."
-                                    )
-                                  ])
-                                ])
-                              ])
-                            ])
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "col-md-2 product-image-thumbs pb-5" },
-                          [
-                            _c("div", { staticClass: "product-image-thumb" }, [
-                              _c("img", {
-                                attrs: {
-                                  src: "images/img.jpg",
-                                  alt: "Product Image"
-                                }
-                              })
-                            ])
-                          ]
-                        )
                       ])
                     ])
                   ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-md-2 product-image-thumbs pb-5" }, [
+                _c("div", { staticClass: "product-image-thumb" }, [
+                  _c("img", {
+                    attrs: { src: "images/img.jpg", alt: "Product Image" }
+                  })
                 ])
               ])
             ])
@@ -56385,7 +56157,7 @@ Vue.compile = compileToFunctions;
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"Promise based HTTP client for the browser and node.js","main":"index.js","scripts":{"test":"grunt test","start":"node ./sandbox/server.js","build":"NODE_ENV=production grunt build","preversion":"npm test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json","postversion":"git push && git push --tags","examples":"node ./examples/server.js","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","fix":"eslint --fix lib/**/*.js"},"repository":{"type":"git","url":"https://github.com/axios/axios.git"},"keywords":["xhr","http","ajax","promise","node"],"author":"Matt Zabriskie","license":"MIT","bugs":{"url":"https://github.com/axios/axios/issues"},"homepage":"https://axios-http.com","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"jsdelivr":"dist/axios.min.js","unpkg":"dist/axios.min.js","typings":"./index.d.ts","dependencies":{"follow-redirects":"^1.14.0"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}]}');
+module.exports = JSON.parse('{"_args":[["axios@0.21.4","C:\\\\laragon\\\\www\\\\wms"]],"_development":true,"_from":"axios@0.21.4","_id":"axios@0.21.4","_inBundle":false,"_integrity":"sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==","_location":"/axios","_phantomChildren":{},"_requested":{"type":"version","registry":true,"raw":"axios@0.21.4","name":"axios","escapedName":"axios","rawSpec":"0.21.4","saveSpec":null,"fetchSpec":"0.21.4"},"_requiredBy":["#DEV:/"],"_resolved":"https://registry.npmjs.org/axios/-/axios-0.21.4.tgz","_spec":"0.21.4","_where":"C:\\\\laragon\\\\www\\\\wms","author":{"name":"Matt Zabriskie"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"bugs":{"url":"https://github.com/axios/axios/issues"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}],"dependencies":{"follow-redirects":"^1.14.0"},"description":"Promise based HTTP client for the browser and node.js","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"homepage":"https://axios-http.com","jsdelivr":"dist/axios.min.js","keywords":["xhr","http","ajax","promise","node"],"license":"MIT","main":"index.js","name":"axios","repository":{"type":"git","url":"git+https://github.com/axios/axios.git"},"scripts":{"build":"NODE_ENV=production grunt build","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","examples":"node ./examples/server.js","fix":"eslint --fix lib/**/*.js","postversion":"git push && git push --tags","preversion":"npm test","start":"node ./sandbox/server.js","test":"grunt test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json"},"typings":"./index.d.ts","unpkg":"dist/axios.min.js","version":"0.21.4"}');
 
 /***/ })
 
